@@ -7,7 +7,7 @@ from database import session
 
 Base = declarative_base()
 
-# Define the association table for the many-to-many relationship
+# the association table for the many-to-many relationship
 restaurant_customer_association = Table(
     'restaurant_customer_association',
     Base.metadata,
@@ -15,7 +15,7 @@ restaurant_customer_association = Table(
     Column('customer_id', Integer, ForeignKey('customers.id'))
 )
 
-# Define the Restaurant model
+# Restaurant model
 class Restaurant(Base):
     __tablename__ = 'restaurants'
     
@@ -34,7 +34,7 @@ class Restaurant(Base):
         return f'Restaurant: {cls.name}, price: {cls.price}'
     
     def restaurant_reviews(self):
-        reviews = self.reviews  # Assuming you have a reviews relationship
+        reviews = self.reviews 
         formatted_reviews = [
             f"Review by {review.customer.full_name()}: {review.star_rating} stars"
             for review in reviews
@@ -52,7 +52,7 @@ class Restaurant(Base):
     def all_reviews(self):
         return [f"Review for {self.name} by {review.customer.full_name()}: {review.star_rating} stars." for review in self.reviews]
 
-# Define the Customer model
+# the Customer model
 class Customer(Base):
     __tablename__ = 'customers'
     id = Column(Integer, primary_key=True)
@@ -96,7 +96,7 @@ class Customer(Base):
             session.delete(review)
         session.commit()
 
-# Define the Review model
+# the Review model
 class Review(Base):
     __tablename__ = 'reviews'
     

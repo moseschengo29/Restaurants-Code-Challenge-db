@@ -32,7 +32,9 @@ if __name__ == '__main__':
     
     print(customer3.favorite_restaurant())
     print(customer3.full_name())
+    
     # customer3.add_review(restaurant2, 5, review='This is a added review!')
+    
     print(customer3.customer_reviews())
     print(customer3.customer_restaurants())
     
